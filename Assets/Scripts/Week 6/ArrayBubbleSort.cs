@@ -20,7 +20,7 @@ public class ArrayBubbleSort : MonoBehaviour
     {
         int n = array.Length; //Interger containing length of array
 
-        for(int i = 0; i < n - 1; i++) //Loop through array until sorted shorten each loop as furthest right is sorted
+        for(int i = 0; i < n - 1; i++) //Loop through array until sorted
         {
             for(int j = 0; j < n - i - 1; j++) //Compare pairs of adjacent elements
             {
@@ -40,6 +40,6 @@ public class ArrayBubbleSort : MonoBehaviour
 
     string ArrayToString(int[] array)
     {
-        return string.Join(", ", array); //Convert array from int to string join with ", "
+        return string.Join(", ", array); //Convert array from int to string
     }
 }

@@ -20,7 +20,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/You Win.unity
     guid: bc08b608516534a4f9576b56e5f85696
-  - enabled: 1
-    path: Assets/Scenes/Coin Collector.unity
-    guid: bb3432bd42b6e484080e8ccd2cb77748
   m_configObjects: {}

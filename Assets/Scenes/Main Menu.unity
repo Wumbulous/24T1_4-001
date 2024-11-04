@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 53478357}
   - component: {fileID: 53478356}
   m_Layer: 0
-  m_Name: PlayerUI
+  m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 678654995}
   - component: {fileID: 678654994}
   m_Layer: 0
-  m_Name: Coin
+  m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

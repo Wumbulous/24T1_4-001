@@ -27,9 +27,9 @@ public class ListInsertionSort : MonoBehaviour
 
             while(j >=0 && list[j] > key) // If j is 0 or greater and greater than the key j is in the wrong position
             {
-                list[j + 1] = list[j]; //Shift greater element right and position
+                list[j + 1] = list[j]; //Shift greater element right
 
-                j = j - 1; //Shift to j original position
+                j = j - 1; //Shift one step left  to compare key to next left element, until right spot is found.
             }
             list[j + 1] = key; //Insert key value in right spot.
         
