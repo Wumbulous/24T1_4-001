@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class TargetBehaviour : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
 
     public float movementSpeed;
 
-    public int healthPoints;
+    private int healthPoints;
 
     void Start()
     {
@@ -51,6 +51,11 @@ public class TargetBehaviour : MonoBehaviour
            Destroy(gameObject);
 
         }
+    }
+
+    public int GetHealthPoints()
+    {
+        return healthPoints;
     }
 
 

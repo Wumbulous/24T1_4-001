@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataManager : MonoBehaviour
+public class DataManger : MonoBehaviour
 {
     private TargetBehaviour[] targets;
     private int[] hpValues;
@@ -15,8 +15,6 @@ public class DataManager : MonoBehaviour
         hpValues = new int[targets.Length];
 
     }
-
-    
 
     void BubbleSortArray(int[] array)
     {
