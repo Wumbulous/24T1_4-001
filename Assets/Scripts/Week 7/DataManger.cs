@@ -16,7 +16,7 @@ public class DataManager : MonoBehaviour
 
     }
 
-    
+ 
 
     void BubbleSortArray(int[] array)
     {

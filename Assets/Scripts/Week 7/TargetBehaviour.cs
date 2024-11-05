@@ -23,9 +23,9 @@ public class TargetBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       LookAtPlayer();
+       //LookAtPlayer();
 
-       MoveTowardsPlayer();
+       //MoveTowardsPlayer();
     }
 
     void LookAtPlayer()

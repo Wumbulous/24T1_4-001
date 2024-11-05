@@ -33,7 +33,7 @@ public class DataCharacter : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             
-            Instantiate(bullet, transform.position, Quaternion.Euler(transform.position.x , transform.position.y, transform.position.z + 90));
+            Instantiate(bullet, transform.position, transform.rotation);
 
             
         }
