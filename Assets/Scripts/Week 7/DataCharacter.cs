@@ -39,7 +39,7 @@ public class DataCharacter : MonoBehaviour
         }
     }
 
-    private void FaceNextTarget()
+    public void FaceNextTarget()
     {
         int targetCount = targets.Length;
 

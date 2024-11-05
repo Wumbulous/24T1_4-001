@@ -8,7 +8,7 @@ public class TargetBehaviour : MonoBehaviour
 
     public float movementSpeed;
 
-    private int healthPoints;
+    public int healthPoints;
 
     void Start()
     {
@@ -23,9 +23,9 @@ public class TargetBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       //LookAtPlayer();
+       LookAtPlayer();
 
-       //MoveTowardsPlayer();
+       MoveTowardsPlayer();
     }
 
     void LookAtPlayer()
@@ -42,14 +42,16 @@ public class TargetBehaviour : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-           SpawnTarget spawner = FindObjectOfType<SpawnTarget>();
-
-           if(spawner != null)
-           {
-               spawner.CreateNewTarget();
-           }
+           
            Destroy(gameObject);
 
+           OnDestroy();
+
+        }
+       
+        if(collision.gameObject.CompareTag("Bullet"))
+        {
+            TakeDamage();
         }
     }
 
@@ -58,6 +60,32 @@ public class TargetBehaviour : MonoBehaviour
         return healthPoints;
     }
 
+    public void TakeDamage()
+    {
+        healthPoints = healthPoints - 1;
 
+        if(healthPoints <= 0)
+        {
+            Destroy(gameObject);
 
+            OnDestroy();
+        }
+    }
+
+    void OnDestroy()
+    {
+      DataCharacter player = FindObjectOfType<DataCharacter>();
+
+      if(player != null)
+      {
+          player.FaceNextTarget();
+      }
+      
+      SpawnTarget spawner = FindObjectOfType<SpawnTarget>();
+
+      if(spawner != null)
+      {
+        spawner.CreateNewTarget();
+      }
+    }
 }

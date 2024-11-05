@@ -12,8 +12,17 @@ public class ProjectileMovement : MonoBehaviour
     {
         MoveForward();
     }
+
     void MoveForward()
     {
         transform.position += transform.forward * bulletSpeed * Time.deltaTime;
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Target"))
+        {
+            Destroy(gameObject);
+        }
+    }  
 }
