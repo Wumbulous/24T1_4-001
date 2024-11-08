@@ -25,7 +25,7 @@ public class TargetBehaviour : MonoBehaviour
     {
        LookAtPlayer();
 
-       MoveTowardsPlayer();
+       //MoveTowardsPlayer();
     }
 
     void LookAtPlayer()

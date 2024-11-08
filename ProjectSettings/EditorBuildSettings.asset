@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/You Win.unity
     guid: bc08b608516534a4f9576b56e5f85696
+  - enabled: 1
+    path: Assets/Scenes/Week 6.unity
+    guid: aa9c09d504deec646ab9830f75363524
   m_configObjects: {}
