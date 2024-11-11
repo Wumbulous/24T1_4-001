@@ -24,6 +24,7 @@ public class EnemyStates : MonoBehaviour
     public float movementSpeed;
 
     private int currentIndexNum;
+
     // Start is called before the first frame update
     void Start()
     {
