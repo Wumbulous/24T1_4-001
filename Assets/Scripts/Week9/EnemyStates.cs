@@ -1,51 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyStates : MonoBehaviour
 {
-    public Transform[] patTargets;
+    public Transform[] patPoints; //Store transform off all points in scene enemy is to move towards
 
-    private enum enemyState
+    private int currentIndex = 0; //Store point enemy is currently moving to within array
+
+    private enum enemyState  //Store states enemy can be in, patrolling for moving between points, chasing for moving towards player
     {
         Patrolling,
         Chasing
 
     }
 
-    private enemyState currentState;
+    private enemyState currentState; //Store enemy's current state
 
-    public Transform player;
+    public Transform player; //Reference to players location in game world.
 
-    public float playerDetectionRadius = 5.0f;
+    public float playerDetectionRadius = 5.0f; //Area player has to get within to be chased
 
-    private float distanceToPlayer;
+    private float distanceToPlayer; //Distance between enemy and player
 
-    public float movementSpeed;
+    public float movementSpeed; //Speed enemy moves at
 
-    private int currentIndexNum;
-
-    // Start is called before the first frame update
     void Start()
     {
-        currentState = enemyState.Patrolling;
-
-        
+        currentState = enemyState.Patrolling; //At start of play have enemy already patrolling
     }
 
-    // Update is called once per frame
     void Update()
     {
-        distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        distanceToPlayer = Vector3.Distance(transform.position, player.position); //Calculate distance between enemy and player every frame
 
-        HandleState();
+        HandleState(); //Methos to handle state function
 
-        if (distanceToPlayer <=  playerDetectionRadius)
+        if (distanceToPlayer <=  playerDetectionRadius) //If player is close enough to enemy start chasing
         {
             ChangeState(enemyState.Chasing);
         }
 
-        else if (distanceToPlayer >= playerDetectionRadius)
+        else if (distanceToPlayer >= playerDetectionRadius) //if player is far away from enemy patroll between points
         {
             ChangeState(enemyState.Patrolling);
         }
@@ -53,44 +50,40 @@ public class EnemyStates : MonoBehaviour
 
     private void HandleState()
     {
-        switch(currentState)
+        switch(currentState) //Switch action depending on current enemy state
         {
-            case enemyState.Chasing:
+           case enemyState.Patrolling: //If enemy is set to patroll move towards current patroll point in array at given speed
 
-                ChasePlayer();
-                    break;
+                int patAmount = patPoints.Length; //Store length of array to keep current index within bounds 
 
-            case enemyState.Patrolling:
-                PatrolPoints();
-                    break;
+                transform.position = Vector3.MoveTowards(transform.position, patPoints[currentIndex].position, movementSpeed * Time.deltaTime);
+
+                if (transform.position == patPoints[currentIndex].position) //When enemy reaches current patroll point, start moving towards next in array by 1, kept within bounds of array length
+                {
+                    currentIndex = (currentIndex + 1) % patAmount;
+                }
+                break;
+
+            case enemyState.Chasing: //If enemy is set to chase, move towards player position at given speed.
+
+                transform.position = Vector3.MoveTowards(transform.position, player.position, movementSpeed * Time.deltaTime);
+
+                break;
+
+            
         }
     }
-    private void ChangeState(enemyState newState)
+    private void ChangeState(enemyState newState) //Change current state to new state
     {
         currentState = newState;
 
-        Debug.Log("Enemy is: " + currentState);
     }
 
-    void ChasePlayer()
+    void OnCollisionEnter(Collision collision) //When collide with player give game over.
     {
-        transform.LookAt(player.transform);
-
-        transform.position += transform.forward * (movementSpeed * Time.deltaTime);
-    }
-
-    void PatrolPoints()
-    {
-        int targetCount = patTargets.Length; 
-
-       
-
-       Transform nextPoint = patTargets[currentIndexNum];
-
-       transform.LookAt(nextPoint.transform);
-
-       transform.position += transform.forward * (movementSpeed * Time.deltaTime);
-      
-    
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            SceneManager.LoadScene("Game Over");
+        }
     }
 }
