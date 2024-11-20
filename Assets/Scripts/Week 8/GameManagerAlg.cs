@@ -12,37 +12,30 @@ public class GameManagerAlg : MonoBehaviour
     {
         targets = FindObjectsOfType<Target>();
 
-        hpValues = new int[targets.Length];
-
-        for(int i = 0; i < targets.Length; i++)
-        {
-            hpValues[i] = targets[i].GetHealthPoints();
-        }
-
-        BubbleSort(hpValues);
+        BubbleSort();
     }
 
-    void BubbleSort(int[] array)
+    void BubbleSort()
     {
-        int n = array.Length;
+        int n = targets.Length;
 
         for(int i = 0; i < n -1; i++)
         {
             for(int j = 0; j< n - i - 1; j++)
             {
 
-              if(array[j] < array[j + 1])
+              if(targets[j].GetHealthPoints() > targets[j + 1].GetHealthPoints())
               {
-                  int temp = array[j];
-                  array[j] = array[j + 1];
-                  array[j + 1] = temp;
+                  Target temp = targets[j];
+                  targets[j] = targets[j + 1];
+                  targets[j + 1] = temp;
               }
             }
         }
     }
 
-    public int[] GetSortedHPValues()
+    public Target[] GetSortedHPValues()
     {
-        return hpValues;
+        return targets;
     }
 }

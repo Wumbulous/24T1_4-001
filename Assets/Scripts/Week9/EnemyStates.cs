@@ -37,14 +37,14 @@ public class EnemyStates : MonoBehaviour
 
         HandleState(); //Methos to handle state function
 
-        if (distanceToPlayer <=  playerDetectionRadius) //If player is close enough to enemy start chasing
+        //if (distanceToPlayer <=  playerDetectionRadius) //If player is close enough to enemy start chasing
         {
-            ChangeState(enemyState.Chasing);
+            //ChangeState(enemyState.Chasing);
         }
 
-        else if (distanceToPlayer >= playerDetectionRadius) //if player is far away from enemy patroll between points
+        //else if (distanceToPlayer >= playerDetectionRadius) //if player is far away from enemy patroll between points
         {
-            ChangeState(enemyState.Patrolling);
+            //ChangeState(enemyState.Patrolling);
         }
     }
 
@@ -62,11 +62,21 @@ public class EnemyStates : MonoBehaviour
                 {
                     currentIndex = (currentIndex + 1) % patAmount;
                 }
+
+                if(distanceToPlayer >= playerDetectionRadius)
+                {
+                    ChangeState(enemyState.Patrolling);
+                }
                 break;
 
             case enemyState.Chasing: //If enemy is set to chase, move towards player position at given speed.
 
                 transform.position = Vector3.MoveTowards(transform.position, player.position, movementSpeed * Time.deltaTime);
+
+                if(distanceToPlayer <= playerDetectionRadius) //If player is close enough to enemy start chasing
+                {
+                    ChangeState(enemyState.Patrolling);
+                }
 
                 break;
 
@@ -79,7 +89,7 @@ public class EnemyStates : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collision collision) //When collide with player give game over.
+    void OnCollisionEnter(Collision collision) //When collide with player load game over scene.
     {
         if(collision.gameObject.CompareTag("Player"))
         {

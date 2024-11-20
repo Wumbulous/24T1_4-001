@@ -6,14 +6,14 @@ public class PlayerControllerAlg : MonoBehaviour
 {
     private GameManagerAlg gameManager;
     private Target[] targets;
-    private int currentTargetIndex = 0;
+    private int currentTargetIndex = -1;
 
     [SerializeField] private Camera playerCamera;
     // Start is called before the first frame update
     void Start()
     {
         gameManager = FindObjectOfType<GameManagerAlg>();
-        targets = FindObjectsOfType<Target>();
+        targets = gameManager.GetSortedHPValues();
         FaceNextTarget();
     }
 
