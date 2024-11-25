@@ -8,7 +8,7 @@ public class NavEnemyStates : MonoBehaviour
 {
     public Transform[] targets; //Array of points the enemy is to move between when patrolling.
 
-    public int currentIndex = 0; //Current target in array the enemy is moving towards.
+    private int currentIndex = 0; //Stores current index telling which target to set destination to.
 
     private enum navEnemyState //Stores states enemy can be in, patrolling for going between set points, chasing for persuing the player.
     {
