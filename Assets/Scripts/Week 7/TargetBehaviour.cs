@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class TargetBehaviour : MonoBehaviour
 {
+
+    /// <summary>
+    /// OLD AND UNUSED ATTEMPT IGNORE
+    /// </summary>
     private GameObject player;
 
     public float movementSpeed;

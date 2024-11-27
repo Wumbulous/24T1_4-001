@@ -7,11 +7,11 @@ public class Back : MonoBehaviour
 {
    void Update()
    {
-	   BackUp();
+	   BackUp(); //BackUp method called every frame
    }
    void BackUp()
    {
-	   if(Input.GetKeyDown(KeyCode.Escape))
+	   if(Input.GetKeyDown(KeyCode.Escape)) //If player inputs esc key return to Workshop Selector menu
 	   {
 		   SceneManager.LoadScene("Workshop Selector");
 	   }

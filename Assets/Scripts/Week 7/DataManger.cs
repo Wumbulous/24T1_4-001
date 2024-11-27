@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
+
+    /// <summary>
+    /// OLD AND UNUSED ATTEMPT IGNORE
+    /// </summary>
     private TargetBehaviour[] targets;
     private int[] hpValues;
 

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SpawnTarget : MonoBehaviour
 {
+
+    /// <summary>
+    /// OLD AND UNUSED IGNORE
+    /// </summary>
     public GameObject enemy;
 
     

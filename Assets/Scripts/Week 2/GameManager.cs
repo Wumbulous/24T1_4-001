@@ -1,19 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement;//library used here to load new scenes
 
 public class GameManager : MonoBehaviour
 {
-    public int neededCoins = 1; 
-    private int CollectedCoin = 0;
-    private bool isPaused = false;
+    public int neededCoins = 1; //Adjustable integer used to set the amount of coins needed to win
+    private int CollectedCoin = 0;//integer used to keep track on amount of coins player must collect to win
+    private bool isPaused = false; //boolean used to keep track of if game is paused or not
 
-    
-    public void AddCollectedCoin(int amount)
+
+    public void AddCollectedCoin(int amount)//Method called upon player colliding with coin recieves +1
     {
-        CollectedCoin += amount;
-        if(CollectedCoin >= neededCoins)
+        CollectedCoin += amount;//Adds 1 to collected coin amount
+        if (CollectedCoin >= neededCoins)//If player has collected the same amount of coins than is required send them to the win screen
         {
             SceneManager.LoadScene("You Win");
         }
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        Pause();
+        Pause();//Calls pause method every frame
 
     }
 

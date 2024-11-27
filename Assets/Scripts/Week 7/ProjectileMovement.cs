@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class ProjectileMovement : MonoBehaviour
 {
+
+    /// <summary>
+    /// OLD AND UNUSED IGNORE
+    /// </summary>
     public float bulletSpeed;
   
 

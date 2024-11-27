@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class DataCharacter : MonoBehaviour
 {
+
+    /// <summary>
+    /// OLD AND UNUSED ATTEMPT IGNORE
+    /// </summary>
     private DataManager dm;
     private TargetBehaviour[] targets;
     private int currentTargetIndex = 0;

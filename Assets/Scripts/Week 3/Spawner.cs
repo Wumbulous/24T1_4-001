@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
     {
         for (int i = 0; i < numberToSpawn; i++)
         {
-            Instantiate(coin, new Vector3(i * distanceCoin, 0, 0), Quaternion.Euler(-90, 0, 0));
+            Instantiate(coin, new Vector3(i * distanceCoin, 0, 0), Quaternion.Euler(-90, 0, 0));//Creates new coin at a distance of the given distanceCoin variable from the last
         }
         
     }
